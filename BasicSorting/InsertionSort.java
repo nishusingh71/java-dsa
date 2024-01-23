@@ -1,3 +1,4 @@
+package BasicSorting;
 public class InsertionSort {
     public static void insertion(int arr[]) {
         for (int i = 0; i < arr.length; i++) {

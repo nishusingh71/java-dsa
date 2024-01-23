@@ -1,3 +1,4 @@
+package BasicSorting;
 public class CountingSort {
     public static void counting(int arr[]) {
         int largest = Integer.MIN_VALUE;
