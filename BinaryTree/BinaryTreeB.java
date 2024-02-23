@@ -16,6 +16,16 @@ public class BinaryTreeB {
             this.left = null;
             this.right = null;
         }
+
+        public void inOrder() {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'inOrder'");
+        }
+
+        public void mirror() {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'mirror'");
+        }
     }
 
     static class BinaryTree {
@@ -323,11 +333,71 @@ public class BinaryTreeB {
                 return leftDist + 1;
             }
         }
+
+        // Kth Ancestor of node
+        public static int kAncestor(Node root, int n, int k) {
+            if (root == null) {
+                return -1;
+            }
+            if (root.data == n) {
+                return 0;
+            }
+            int lDist = kAncestor(root.left, n, k);
+            int rDist = kAncestor(root.right, n, k);
+            if (lDist == -1 && rDist == -1) {
+                return -1;
+            }
+            int max = Math.max(lDist, rDist);
+            if (max + 1 == k) {
+                System.out.println(root.data);
+            }
+            return max + 1;
+        }
+
+        // Transform to sum tree
+        public static int transfom(Node root) {
+            if (root == null) {
+                return 0;
+            }
+            int leftChild = transfom(root.left);
+            int rightChild = transfom(root.right);
+            int data = root.data;
+            int newLeft = root.left == null ? 0 : root.left.data;
+            int newRight = root.right == null ? 0 : root.right.data;
+            root.data = newLeft + leftChild + newRight + rightChild;
+            return data;
+        }
+
+        // Question to Practice
+        static boolean isUnivalued(Node root) {
+            if (root == null) {
+                return true;
+            }
+            if (root.left != null && root.data != root.left.data)
+                return false;
+            if (root.right != null && root.data != root.right.data)
+                return false;
+            return isUnivalued(root.left) && isUnivalued(root.right);
+        }
+
+        // Delete Leaf Node with values as X.
+        static Node deleteLeaf(Node root, int x) {
+            if (root == null)
+                return null;
+            root.left = deleteLeaf(root.left, x);
+            root.right = deleteLeaf(root.right, x);
+            if (root.data == x && root.left == null && root.right == null) {
+                return null;
+            }
+            return root;
+        }
+
+        
     }
 
     public static void main(String[] args) {
         // int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
-        // BinaryTree tree = new BinaryTree();
+        BinaryTree tree = new BinaryTree();
         // Info info = new Info(3, 2);
         // System.out.println(root.data);
         // BinaryTree.preorder(root);
@@ -361,7 +431,16 @@ public class BinaryTreeB {
         int n1 = 4, n2 = 5;
         // System.out.println( BinaryTree.lca(root, n1, n2));
         // System.out.println(BinaryTree.lca2(root, n1, n2).data);
-        System.out.println(BinaryTree.minDist(root, n1, n2));
-
+        // System.out.println(BinaryTree.minDist(root, n1, n2));
+        // System.out.println(BinaryTree.kAncestor(root, 5, 1));
+        // System.out.println(BinaryTree.transfom(root));
+        // BinaryTree.preorder(root);
+        // System.out.println(BinaryTree.isUnivalued(root));
+        // root.inOrder();
+        // System.out.println("");
+        // root.mirror();
+        // root.inOrder();
+        BinaryTree.deleteLeaf(root, 1);
+        BinaryTree.inorder(root);
     }
 }
