@@ -3,6 +3,7 @@ package Hashing;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Set;
 
 class HashMapEx {
 
@@ -138,21 +139,21 @@ class HashMapEx {
 
     public static void main(String[] args) {
         // Insertion -O(1)
-        // HashMap<String, Integer> hm = new HashMap<>();
-        // hm.put("India", 120);
-        // hm.put("China", 150);
-        // hm.put("US", 50);
-        // System.out.println(hm);
-        // // Get-O(1)
-        // int population = hm.get("India");
-        // System.out.println(population);
-        // //ContainsKey-O(1)
-        // System.out.println(hm.containsKey("India")); //true
-        // //Remove
-        // System.out.println(hm.remove("US"));
+        HashMap<String, Integer> hm = new HashMap<>();
+        hm.put("India", 120);
+        hm.put("China", 150);
+        hm.put("US", 50);
+        System.out.println(hm);
+        // Get-O(1)
+        int population = hm.get("India");
+        System.out.println(population);
+        // ContainsKey-O(1)
+        System.out.println(hm.containsKey("India")); // true
+        // Remove
+        System.out.println(hm.remove("US"));
         // System.out.println(hm.size());
         // hm.clear();
-        // System.out.println(hm);
+        System.out.println(hm);
 
         // Iterate
         // Set<String> keys = hm.keySet();
@@ -174,10 +175,10 @@ class HashMapEx {
         // System.out.println(hm.get("India"));
 
         // HashMap
-        HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("India", 120);
-        hm.put("China", 150);
-        hm.put("US", 50);
+        HashMap<String, Integer> hms = new HashMap<>();
+        hms.put("India", 120);
+        hms.put("China", 150);
+        hms.put("US", 50);
         System.out.println(hm);
 
         // LinkedHashMap
@@ -193,5 +194,6 @@ class HashMapEx {
         // tm.put("China", 150);
         // tm.put("US", 50);
         // System.out.println(tm);
+
     }
 }
